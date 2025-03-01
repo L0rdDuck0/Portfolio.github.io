@@ -1,0 +1,737 @@
+/* Base */
+
+:root {
+    --color-body: #333333;      /*Variables CSS qui peuvent etre appelé dans notre code*/
+    --background-body: #ffffff;
+  }
+  
+  * {
+    box-sizing: border-box;
+  }
+  
+  html {
+    font-size: 62.5%;       /*modifie la taille d'écriture par défaut en %  */
+  }
+  
+  body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;   /* Police décriture*/
+    font-size: 1.6rem;      /*definit la hauteur entre les lignes de test dans tout le body */
+    line-height: 1.6;        /*met un espace entre le texte et l'avatar */
+    color: var(--color-body);   /* VARIABLE couleur des lettres */
+    margin: 0;
+    background: var(--background-body);
+  }
+  
+  h1,  /*dans {}= elements appliqué au titres */
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: 'Poppins', sans-serif;
+    color: #000;
+    font-weight: 500;
+    line-height: 1;      /*definit la hauteur entre les lignes de test dans le hero */
+  }
+  
+  h1,       
+  .h1 {
+    font-size: 3.1rem;
+  }
+  
+  h2,
+  .h2 {
+    font-size: 2.8rem;
+    text-transform: uppercase;
+  }
+  
+  h3,
+  .h3 {
+    font-size: 2.1rem;
+  }
+  
+  a {
+    text-decoration: none;      /* appartenance du a au header change les couleurs des liens par defaut */
+  }
+  
+  img {         /* balise image empeche l'avatar de déborder (sur petite fenetre) */
+    max-width: 100%;
+    height: auto;
+  }
+  
+  ul {
+    padding-left: 2rem;
+  }
+  
+  li {
+    margin-bottom: 1rem;  /*fournit une césure sur la bordure coloré des compétences*/
+  }
+  
+  .list-unstyled {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .category {
+    margin: 0;
+    font-size: 1rem;
+    text-transform: uppercase;
+    color: #5b6c78;
+  }
+  
+  .container {      /* pour les téléphone */
+    padding: 1rem 2rem;
+  }
+  
+  .d-flex {              /* quadrille et place les different container*/      
+    display: flex;      /* quand on retrecit l'onglet il met les elements les uns a coté des autres */
+    align-items: center;        /* centre nos element a la meme hauteur  */
+    justify-content: space-between;     /* dispatch nos element pour qu'il prennent toute la largeur de la page  */
+  }
+  
+  .grid {
+    display: flex;      /* quand on retrecit l'onglet il met les elements les uns a coté des autres */
+    flex-wrap: wrap;    /*met a la ligne tout les element qui dépasse de la petite fenetre */
+  }
+  
+  .grid__item {     /* aura une largeur en colonne qu'on lui définira*/
+    flex-grow: 1;
+    flex-shrink: 0;
+    width: 100%;        /*met un espace entre le texte et l'avatar */
+    padding: 1rem;
+  }
+  
+  @media screen and (min-width:750px) {     /* prend 50% de sa zone totale sur grand écran seulement grace a (media screen )*/
+    .container {
+      max-width: 1200px;        /* l'élément prend 50% de sa zone totale sur petit et grand écran*/
+      margin: 0 auto;            /* centre bien la partie conteneur au milieu de l'écran*/
+      padding: 2rem;            /* le padding c'est la 1iere couche de notre contenu, permet de définir les différents écarts de remplissage sur les quatre côtés d'un élément */
+    }
+  
+    .grid__item {
+      max-width: 50%;
+    }
+  }
+  
+  /* Sections */
+  
+  section {         
+    padding: 5.5rem 0;      /*tout nos element avec section auront un padding de 0 */
+  }
+  
+  .section-title {
+    margin-top: 0;
+    font-size: 3.8rem;
+  }
+  
+  .section-header {
+    text-align: center;
+  }
+  
+  @media screen and (min-width:750px) {
+    .section-title {
+      font-size: 4.8rem;
+    }
+  }
+  
+  .header {         /* le "." est fait pour représenter les selecteurs class pour qu'on puisse modifier ce qu'il contienne */
+    background: #FFFFFF;
+    border-bottom: 1px solid #EEE;      /* solid met une bordure (poitillé) seulement en bas du header  */
+    position: sticky;   /*quand on scrool la zone du menu (logos réseaux, menu 3 barres ) restent sur l'écrans*/
+    top: 0;
+    z-index: 1;
+  }
+  
+  .header .logo {       /* les elements sont parent et enfant*/
+    font-family: 'Poppins', sans-serif;
+    font-size: 2rem;
+    letter-spacing: 2px;
+  }
+  
+  
+  .header li {      /* generique du header*/
+    display: inline-flex;
+    align-items: center;
+    padding: 0 .5rem;
+  }
+  
+  .header a {       /* crée une appartenance du a au header change les couleurs des liens par defaut */
+    color: var(--color-body);       
+  }
+  
+  .header a:hover {
+    color: red;
+  }
+  
+  .header .right {      /* on centre le bouton menu (burger) au logo linkedin */
+    display: flex;
+    align-items: center;
+  }
+  
+  .socials {
+    display: flex;
+  }
+  
+  .socials li {
+    margin-bottom: 0;
+  }
+  
+  .socials a { /* met un espace entre mon nom et les logos de  mes réseaux  sur le header */
+    padding: 0 2px;
+  }
+  
+  .socials .icon {
+    height: 20px;
+  }
+  
+  .burger {     /*(bouton menu) burger ne s'affiche pas quand la fenetre est grande*/
+    background: none;
+    border: none;
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+    position: relative;
+    margin-left: 1rem;
+  }
+  
+  .burger .bar {        /* forme de la 1ere barre du bouton menu*/
+    display: block;
+    width: 22px;
+    height: 3px;
+    background: var(--color-body);
+  }
+  
+  .burger .bar::before, .burger .bar::after {       /* forme de la 2ieme  3ieme barre du bouton menu*/
+    display: block;
+    content: "";
+    width: 22px;
+    height: 3px;
+    background: var(--color-body);
+    position: absolute;
+  }
+  
+  .burger .bar::before {        /* position de la 2ieme barre du bouton menu*/
+    transform: translateY(-8px);
+  }
+  
+  .burger .bar::after {         /* position de la 3ieme barre du bouton menu*/
+    transform: translateY(8px);
+  }
+  
+  @media screen and (max-width:749px) {         /* style que pour le mobile*/
+    nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      position: fixed;
+      top: 55px;
+      left: 110%;
+      width: 0;
+      overflow: hidden;
+      opacity: 0;
+      height: calc(100vh - 55px);
+      background: #F5F5F5;
+      transition: all .4s ease-out;
+    }
+  
+    nav .menu li {
+      display: flex;
+      justify-content: center;
+    }
+  
+    nav .menu a {
+      display: block;
+      font-size: 2rem;
+      padding: 2rem;
+      transition: all .4s;
+    }
+  
+    .show-nav nav {
+      opacity: 1;
+      width: 100%;
+      left: 0;
+      z-index: 2;
+    }
+  
+    .show-nav nav li a:hover {
+      transform: scale(1.1);
+      text-decoration: none;
+    }
+  
+    .show-nav .burger .bar {
+      width: 0;
+    }
+  
+    .burger .bar::before,
+    .burger .bar::after {
+      transition: all .2s ease-out;
+    }
+  
+    .show-nav .burger .bar::before {
+      transform: rotate(-45deg);
+    }
+  
+    .show-nav .burger .bar::after {
+      transform: rotate(45deg);
+    }
+  }
+  
+  @media screen and (min-width:750px) {     /* barreNavig serra affiché sur grand ecrans (accueil, a propos, services */
+    .navbar {
+      display: flex;
+    }
+  
+    .burger {       /* burger ne s'affiche pas quand la fenetre est grande*/
+      display: none;
+    }
+  }
+  
+  .hero {           /* class juste en dessous du header séparé en 2 avec avatar a gauche et texte a droite*/
+    background: #5b6c78;
+    color: #FFF;        /* couleure texte en blanc */
+    padding: 1rem 0 0 0;
+  }
+  
+  .hero .title {
+    color: inherit;
+    font-size: 4rem;
+    margin: 1.6rem 0 0 0;        /*reduit l'espace entre les zones de texte en collones*/
+    font-weight: 700;
+  }
+  
+  .hero__item {
+    display: flex;      /* place les elements bien a gauche */
+    flex-direction: column;     /* place le texte en colonne*/
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .hero__item span {
+    text-transform: uppercase;       /*met un texte directement en majuscule*/
+  }
+  
+  .hero__item.left {    /*ANIMATION*/
+    animation-duration: 1s;   /*temps de l'animation*/
+    animation-name: slideInleft;  /*direction de l'animation*/
+  }
+  
+  .hero__item.right {
+    animation-duration: 1s;   /*temps de l'animation*/
+    animation-name: slideInRight;   /*direction de l'animation*/
+  }
+  
+  .hero__avatar img {
+    width: 100%;
+    ;
+  }
+  
+  @media screen and (max-width:749px) {     /* petit ecrans */
+    .hero__item.left {      /* petit ecrans l'avatar passe après le texte */
+      order: 2;
+    }
+
+    .hero__item.right { /* petit ecrans l'avatar passe avant le texte */
+      order: 1;
+    }
+  }
+  
+  @media screen and (min-width:750px) {
+    .hero__item {
+      flex: 1 0 50%;
+      text-align: left;
+    }
+  
+    .hero__item.left {
+      align-items: flex-start;   /*le texte commence a gauche */
+    }
+  
+    .hero .title {
+      font-size: 5rem;
+    }
+  
+    .hero__avatar img {     
+      max-width: 500px;
+      border-radius: 50%;        /*arrondi les élements (avatar dans un cercle)*/
+    }
+  }
+  
+.about .section-title {
+  margin-top: 2.8rem;
+}
+
+@media screen and (min-width:750px) {
+  .about img {
+    padding-right: 3rem;
+  }
+}
+
+  
+  .skills h4,
+  .skills p {   /*fournit une césure sur la bordure coloré des compétences(paragraphe h4)*/
+    margin: 0 0 0.3rem 0;
+  }
+  
+  .skills li {
+    background-color: #F5F5F5;
+    border-left: 3px solid rgb(91, 107, 120);   /*bordure a gauche des compétences*/
+    padding: .9rem 2rem;
+  }
+  
+  .skills .progressbar {  
+    background: #F5F5F5;  /*fond blanc sur la progress bar*/
+    color: #26313b;          /*texte blanc*/
+    margin-bottom: 1rem;  /*met un espace entre les differentes bar progress*/
+  }
+  
+  .skills .bar {
+    background: #a5a9ac;    /*fond gris pale dans les progress bar*/
+    padding: 1rem;  /*met un espace de 1 rem de hauteur */
+  }
+
+  .centered {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* ou align-items: center; selon vos besoins */
+  }
+  
+  .skills .list-unstyled {
+    max-height: 400px; /* Ajustez la valeur selon vos besoins */
+    overflow-y: auto; /* Ajoutez une barre de défilement en cas de dépassement de la hauteur maximale */
+  }
+
+ 
+  
+  .portfolio { /*2h7 YT*/
+    background: #F5F5F5;  /*fond  de toute la partie portfolio*/
+  }
+  
+  .portfolio .grid__item {
+    max-width: 50%; 
+    margin-bottom: 0;
+    opacity: 1;
+    transition: all 1s ease;
+  }
+  
+  .portfolio .grid__item.hide {
+    opacity: 0;
+    max-width: 0;
+    padding: 0;
+    overflow: hidden;
+    transition: all .4s ease;
+  }
+  
+  .portfolio-filters .grid__item {      /*sur petit ecran*/
+    max-width: 50%;   /*les 4 cases en dessous du lorem prennent 50%(2 case superposé a gauche et 2 a droite */
+    margin-bottom: 0; /*annule la marge*/
+  }
+  
+  .portfolio-filters a {    
+    color: var(--color-body); /*couleure du text*/
+    background: #EEE;   /*fond des case qui sont en dessous du lorem*/
+    display: flex;      /*fait en sorte d'appliquer la couleur de font sur toute la largeur des cases*/
+    flex: 1;
+    justify-content: center;  /*centre le texte dans les cases */
+    padding: 1rem;  /*elargie (décontracte) la zones des cases*/
+  }
+  
+  .portfolio-filters a.active { /*donne une couleur au fond de la case qui serra sélectionnée (coché) (cases en dessous du lorem)*/
+    color: #FFF;
+    background: #5b6c78;
+  }
+  
+  .modal {
+    visibility: hidden;
+    opacity: 0;
+    position: fixed;
+    z-index: 4;
+    transform: scale(0);
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+    transition: all 0.5s;
+  }
+  
+  .show.modal {
+    transform: scale(1);
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  .modal__content {
+    background-color: #fefefe;
+    height: 100vh;
+    padding: 5rem 1rem;
+    overflow: auto;
+    text-align: left;
+  }
+  
+  .modal img {
+    margin-bottom: 2rem;
+  }
+  
+  .modal__title {
+    margin: 0 0 2rem;
+  }
+  
+  .modal__close {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    background: none;
+    border: 1px solid #eee;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    font-size: 3.1rem;
+    color: #666;
+    cursor: pointer;
+  }
+  
+  .modal .grid__item {
+    max-width: 100%;
+    margin-bottom: 0;
+    opacity: 1;
+    transition: all 1s ease;
+  }
+  
+  @media screen and (max-width:749px) {   /*sur petit ecran*/
+    .portfolio a {
+      font-size: 1.4rem;
+    }
+  }
+  
+  @media screen and (min-width:750px) {   /*sur grand ecran*/
+    .portfolio .grid__item {
+      max-width: 33.3333%;    /*les 4 cases en dessous du lorem sont alligné sur la page de 33.3333% chacun(grille de 3 collones)*/
+    }
+  
+    .portfolio-filters .grid__item {
+      max-width: 25%;
+    }
+  
+    .modal__content {
+      padding: 3rem;
+    }
+  
+    .modal .grid__item {
+      max-width: 50%;
+    }
+  }
+  
+  .card {
+    background: #FFF; /*fond des cards*/
+    text-transform: uppercase;  /*met le texte en majuscule*/
+    position: relative;   /*fait comprendre a "position: absolute" que c'est lui sont parent*/
+    box-shadow: 0 0 7px rgba(0, 0, 0, 0.1); /*donne de l'ombre au card */
+    border: 1px solid #EEE; /*couleur des bordures des cards*/
+    overflow: hidden;
+  }
+  
+  .card__inner {
+    padding: 2rem; /*padding sur le texte en dessous de l'image de la card (s'allonge = padding)*/
+  }
+  
+  .card__title {    /* s'applique sur le titre de la cardsur grand ecran*/
+    margin: 0 0 1rem; /*donne une marge au titre*/
+    font-size: 1.6rem;
+  }
+  
+  .card__overlay {  /*c'est le "+" qui saffiche quand onpointe le curseur dessus */
+    background: rgba(41, 123, 152, 0.8);
+    position: absolute; /*absolute par rapport a son parent .card*/
+    top: 0;
+  
+    z-index: 0; /*donne une priorité au element ci-dessous*/
+    width: 100%;
+    height: 100%;
+    top: 110%;
+    transition: all .3s;
+  
+  }
+  
+  .card__overlay a {
+    font-size: 4.5rem;
+    color: #FFF;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%; /*rend toute la zone de la card cliquable*/
+  }
+  
+  .card:hover .card__overlay {
+    top: 0;
+  }
+  
+  .form {               /*CONTACT*/
+    max-width: 600px;   /*Empeche de depasser une certaine taille*/
+    margin: 4rem auto 0 auto; /*limite la longeur du block des contacts*/
+  }
+  
+  .form input,      
+  .form textarea {    /*block du NOM,PRENOM,EMAIL*/
+    display: block; /*empile les elements commme des block (nom,prenom,ect°*/
+    width: 100%;  /*prend 100% de la zone horizontale (zone contact)*/
+    padding: 1rem;  /*elargie les element en sur leur verticale */
+    margin-bottom: 2rem;  /*sépare les element du block avec un espace verticale*/
+  }
+  
+  .form textarea {
+    min-height: 200px;  /*taille zone de texte par defaut pour les messages*/
+  }
+  
+  .form .btn {    /*BOUTON ENVOYER*/
+    border: none;
+    background: var(--color-body);
+    color: #FFF;
+    width: auto;
+    min-width: 160px;   /*regle la taille du bouton*/
+    font-size: 2rem;    /*regle la taille du texte dans le bouton */
+    text-transform: uppercase;    /*Le texte est en majuscule dans le bouton*/
+  }
+  
+  .form .btn:hover {  /*LE CURSEUR DEVIENT UNE MAIN*/
+    cursor: pointer;
+    background: #000; /*quand on survole le bouton on a un effet de selection*/
+  }
+  
+  /* Footer */
+  
+  footer {
+    background: #000; /*couleur de la bordure foot */
+    color: #EEE;
+    text-align: center;
+    font-size: 1.4rem;
+  }
+  
+  footer p {  /*reset les marge sur les paragraphe */
+    margin: 1;
+  }
+  
+  footer .grid {
+    align-items: center;
+  }
+  
+  footer .socials {       /*LOGOS Résaux*/
+    justify-content: center;  /*sur petit ecran centre les logos en dessous de mon nom */
+    text-align: center;
+  }
+  
+  footer .socials li {
+    padding: 0 .7rem;   /*élargie les réseaux a l'horizontale*/
+  }
+  
+  footer .socials a {
+    color: rgb(54, 48, 48);
+    border: 1px solid #FFF;
+    border-radius: 50%;
+    padding: 1rem;
+    width: 42px;
+    height: 42px;
+    display: flex;
+    justify-content: center;
+    transition: all .4s;  /*transition quand on selectionne les Logo*/
+  }
+  
+  footer .socials a:hover { /*quand on survole les logos du footer la couleur change */
+    background: rgb(41, 123, 152, 0.8);
+    color: var(--color-body);
+  }
+  
+  .toto {
+    color: #555;
+  }
+  
+  @media screen and (min-width:750px) {
+    footer {
+      text-align: left;     /*sur grand ecran le text est alligné a droite */
+    }
+  
+    footer .grid__item {
+      max-width: 33.333%;
+    }
+  }
+  
+  @keyframes slideInleft {    /* animation CSS effet slide dans le hero au début  */
+    from {                 /*va de ...*/
+      transform: translateX(-110%);   /* animation lancé |  l'axe horizontale avec texte caché a -110% (a gauche)*/
+    }
+  
+    to {                  /*à ...*/
+      transform: translateX(0);     /*animation pas lancé | on revient a l'état initial : 0*/
+    }
+  }
+  
+  @keyframes slideInRight {     /*Partie animation droite*/
+    from {
+      transform: translateX(110%);  /* animation lancé |  l'axe horizontale avec texte caché a 110% (a droite)*/
+    }
+  
+    to {
+      transform: translateX(0); /*animation pas lancé | on revient a l'état initial : 0*/
+    }
+  }
+  
+  
+  /* Blog */
+  
+  .blog h1 {
+    text-align: center;
+  }
+  
+  .blog__text {
+    margin-bottom: 3rem;
+  }
+  
+  .article__card {
+    position: relative;
+    margin-bottom: 2rem;
+  }
+  
+  .article__img {
+    opacity: 0.9;
+  }
+  
+  .article__card:hover img {
+    opacity: 1;
+  }
+  
+  .stretched-link::after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    content: "";
+  }
+  
+  @media screen and (min-width:750px) {
+    .d-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-column-gap: 2rem;
+    }
+  
+    .content-grid {
+      display: grid;
+      grid-template-columns: 6fr 2fr;
+      grid-column-gap: 2rem;
+      grid-template-areas:
+        "article sidebar"
+    }
+  
+    .article {
+      grid-area: article;
+    }
+  
+    .sidebar {
+      grid-area: sidebar;
+    }
+  }
